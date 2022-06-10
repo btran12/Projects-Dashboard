@@ -23,6 +23,7 @@ const useStyles = makeStyles((theme) => ({
     height: '100%'
   }
 }));
+const API_KEY = '4c40b76e885cbdd0161087ef43a8fce5';
 
 class MovieList extends React.Component {
   constructor() {
@@ -46,7 +47,7 @@ class MovieList extends React.Component {
   }
 
   request(page, moviesSelect) {
-    fetch(`https://api.themoviedb.org/3/movie/${moviesSelect}?api_key=4c40b76e885cbdd0161087ef43a8fce5&language=en-US&page=${page}`)
+    fetch(`https://api.themoviedb.org/3/movie/${moviesSelect}?api_key=${API_KEY}&language=en-US&page=${page}`)
       .then((res) => res.json())
       .then(
         (result) => {
