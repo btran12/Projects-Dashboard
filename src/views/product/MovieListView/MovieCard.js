@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
 import {
-  Avatar,
   Box,
   Card,
   CardContent,
@@ -11,8 +10,8 @@ import {
   Typography,
   makeStyles
 } from '@material-ui/core';
-import AccessTimeIcon from '@material-ui/icons/AccessTime';
-import GetAppIcon from '@material-ui/icons/GetApp';
+import Rating from '@mui/material/Rating';
+import Stars from '@material-ui/icons/Stars';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -28,8 +27,11 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-const ProductCard = ({ className, product, ...rest }) => {
+const POSTER_BASE_URL = 'https://image.tmdb.org/t/p/w300';
+
+const MovieCard = ({ className, product: movie, ...rest }) => {
   const classes = useStyles();
+  const [rating, setRating] = React.useState(0);
 
   return (
     <Card
@@ -42,9 +44,9 @@ const ProductCard = ({ className, product, ...rest }) => {
           justifyContent="center"
           mb={3}
         >
-          <Avatar
+          <img
             alt="Product"
-            src={product.media}
+            src={POSTER_BASE_URL + movie.poster_path}
             variant="square"
           />
         </Box>
@@ -52,16 +54,16 @@ const ProductCard = ({ className, product, ...rest }) => {
           align="center"
           color="textPrimary"
           gutterBottom
-          variant="h4"
+          variant="h6"
         >
-          {product.title}
+          {movie.title}
         </Typography>
         <Typography
           align="center"
           color="textPrimary"
-          variant="body1"
+          variant="body2"
         >
-          {product.description}
+          {movie.overview}
         </Typography>
       </CardContent>
       <Box flexGrow={1} />
@@ -70,13 +72,13 @@ const ProductCard = ({ className, product, ...rest }) => {
         <Grid
           container
           justify="space-between"
-          spacing={2}
+          spacing={1}
         >
           <Grid
             className={classes.statsItem}
             item
           >
-            <AccessTimeIcon
+            <Stars
               className={classes.statsIcon}
               color="action"
             />
@@ -85,26 +87,21 @@ const ProductCard = ({ className, product, ...rest }) => {
               display="inline"
               variant="body2"
             >
-              Updated 2hr ago
+              {movie.vote_average}
             </Typography>
           </Grid>
           <Grid
             className={classes.statsItem}
             item
           >
-            <GetAppIcon
-              className={classes.statsIcon}
-              color="action"
+            <Rating
+              name="simple-controlled"
+              value={rating}
+              onChange={(event, newValue) => {
+                setRating(newValue);
+              }}
+              precision={0.5}
             />
-            <Typography
-              color="textSecondary"
-              display="inline"
-              variant="body2"
-            >
-              {product.totalDownloads}
-              {' '}
-              Downloads
-            </Typography>
           </Grid>
         </Grid>
       </Box>
@@ -112,9 +109,9 @@ const ProductCard = ({ className, product, ...rest }) => {
   );
 };
 
-ProductCard.propTypes = {
+MovieCard.propTypes = {
   className: PropTypes.string,
   product: PropTypes.object.isRequired
 };
 
-export default ProductCard;
+export default MovieCard;
