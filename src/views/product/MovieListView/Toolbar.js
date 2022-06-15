@@ -7,9 +7,13 @@ import {
   Box,
   Card,
   CardContent,
+  InputAdornment,
+  SvgIcon,
+  TextField
 } from '@material-ui/core';
 import Chip from '@mui/material/Chip';
 import Stack from '@mui/material/Stack';
+import { Search as SearchIcon } from 'react-feather';
 
 const Toolbar = (props) => {
   const moviesSelectionsLabels = ['Now Playing', 'Popular', 'Top Rated', 'Upcoming'];
@@ -27,7 +31,7 @@ const Toolbar = (props) => {
       <Box mt={3}>
         <Card>
           <CardContent>
-            <Box maxWidth={500}>
+            <Box>
               <Stack direction="row" spacing={1}>
                 {moviesSelections.map((selection, index) => (
                   <Chip
@@ -37,6 +41,26 @@ const Toolbar = (props) => {
                   />
                 ))}
               </Stack>
+              <Box mt={3} maxWidth={500}>
+                <TextField
+                  fullWidth
+                  InputProps={{
+                    startAdornment: (
+                      <InputAdornment position="start">
+                        <SvgIcon
+                          fontSize="small"
+                          color="action"
+                        >
+                          <SearchIcon />
+                        </SvgIcon>
+                      </InputAdornment>
+                    )
+                  }}
+                  size="small"
+                  placeholder="Search movie"
+                  variant="outlined"
+                />
+              </Box>
             </Box>
           </CardContent>
         </Card>

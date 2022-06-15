@@ -54,7 +54,7 @@ const MovieCard = ({ className, product: movie, ...rest }) => {
           align="center"
           color="textPrimary"
           gutterBottom
-          variant="h6"
+          variant="h5"
         >
           {movie.title}
         </Typography>
