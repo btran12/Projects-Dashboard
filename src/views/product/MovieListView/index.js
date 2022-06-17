@@ -7,8 +7,11 @@ import {
   Grid,
   makeStyles
 } from '@material-ui/core';
+import { API_KEY } from 'src/services/TMDB/MovieRequest';
 import Pagination from '@mui/material/Pagination';
 import Page from 'src/components/Page';
+import Backdrop from '@mui/material/Backdrop';
+import CircularProgress from '@mui/material/CircularProgress';
 import Toolbar from './Toolbar';
 import MovieCard from './MovieCard';
 
@@ -23,7 +26,6 @@ const useStyles = makeStyles((theme) => ({
     height: '100%'
   }
 }));
-const API_KEY = '4c40b76e885cbdd0161087ef43a8fce5';
 
 class MovieList extends React.Component {
   constructor() {
@@ -81,13 +83,20 @@ class MovieList extends React.Component {
   }
 
   render() {
-    const { movies, page, totalPages } = this.state;
+    // eslint-disable-next-line object-curly-newline
+    const { movies, page, totalPages, isLoaded } = this.state;
     const classes = useStyles;
     return (
       <Page
         className={classes.root}
         title="Movies"
       >
+        <Backdrop
+          sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
+          open={!isLoaded}
+        >
+          <CircularProgress color="inherit" />
+        </Backdrop>
         <Container maxWidth={false}>
           <Toolbar onSelectMovies={this.handleMoviesSelect} />
           <Box

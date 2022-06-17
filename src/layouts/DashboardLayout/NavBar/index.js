@@ -14,11 +14,11 @@ import {
 import {
   // AlertCircle as AlertCircleIcon,
   BarChart as BarChartIcon,
-  // Lock as LockIcon,
+  Lock as LockIcon,
   Settings as SettingsIcon,
   // ShoppingBag as ShoppingBagIcon,
   User as UserIcon,
-  // UserPlus as UserPlusIcon,
+  UserPlus as UserPlusIcon,
   Users as UsersIcon,
   Video as MovieIcon
 } from 'react-feather';
@@ -56,16 +56,16 @@ const items = [
     icon: SettingsIcon,
     title: 'Settings'
   },
-  // {
-  //   href: '/login',
-  //   icon: LockIcon,
-  //   title: 'Login'
-  // },
-  // {
-  //   href: '/register',
-  //   icon: UserPlusIcon,
-  //   title: 'Register'
-  // },
+  {
+    href: '/login',
+    icon: LockIcon,
+    title: 'Login'
+  },
+  {
+    href: '/register',
+    icon: UserPlusIcon,
+    title: 'Register'
+  },
   // {
   //   href: '/404',
   //   icon: AlertCircleIcon,

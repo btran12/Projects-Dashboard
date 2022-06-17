@@ -35,6 +35,7 @@ const Toolbar = (props) => {
               <Stack direction="row" spacing={1}>
                 {moviesSelections.map((selection, index) => (
                   <Chip
+                    key={selection}
                     label={moviesSelectionsLabels[index]} 
                     variant={selected === index ? 'filled' : 'outlined'} 
                     onClick={() => { handleClick(selection, index); }} 

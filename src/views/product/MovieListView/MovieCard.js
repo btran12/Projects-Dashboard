@@ -12,6 +12,7 @@ import {
 } from '@material-ui/core';
 import Rating from '@mui/material/Rating';
 import Stars from '@material-ui/icons/Stars';
+import { NavLink } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -44,11 +45,13 @@ const MovieCard = ({ className, product: movie, ...rest }) => {
           justifyContent="center"
           mb={3}
         >
-          <img
-            alt="Product"
-            src={POSTER_BASE_URL + movie.poster_path}
-            variant="square"
-          />
+          <NavLink to={`/app/movie?id=${movie.id}`}>
+            <img
+              alt="movie"
+              src={POSTER_BASE_URL + movie.poster_path}
+              variant="square"
+            />
+          </NavLink>
         </Box>
         <Typography
           align="center"

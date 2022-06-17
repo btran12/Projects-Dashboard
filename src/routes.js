@@ -10,6 +10,7 @@ import NotFoundView from 'src/views/errors/NotFoundView';
 import MovieListView from 'src/views/product/MovieListView';
 import RegisterView from 'src/views/auth/RegisterView';
 import SettingsView from 'src/views/settings/SettingsView';
+import MoviePage from './views/product/MoviePageView';
 
 const routes = [
   {
@@ -20,6 +21,7 @@ const routes = [
       { path: 'customers', element: <CustomerListView /> },
       { path: 'dashboard', element: <DashboardView /> },
       { path: 'movies', element: <MovieListView /> },
+      { path: 'movie', element: <MoviePage /> },
       { path: 'settings', element: <SettingsView /> },
       { path: '*', element: <Navigate to="/404" /> }
     ]
