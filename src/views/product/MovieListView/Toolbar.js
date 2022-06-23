@@ -37,7 +37,8 @@ const Toolbar = (props) => {
                   <Chip
                     key={selection}
                     label={moviesSelectionsLabels[index]} 
-                    variant={selected === index ? 'filled' : 'outlined'} 
+                    variant={selected === index ? 'filled' : 'outlined'}
+                    color="primary"
                     onClick={() => { handleClick(selection, index); }} 
                   />
                 ))}

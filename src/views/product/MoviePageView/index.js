@@ -76,10 +76,17 @@ class MoviePage extends React.Component {
     const {
       movieDetails, credits, recommendations, isLoaded
     } = this.state;
+
+    let genres = '';
+    if (movieDetails.genres !== undefined) {
+      genres = movieDetails.genres.map((genre) => genre.name).join(' | ');
+    }
+
     let fiveCasts = [];
     if (credits.cast !== undefined) {
       fiveCasts = credits.cast.slice(0, 5);
     }
+
     let fiveRecommendations = [];
     if (recommendations.results !== undefined) {
       fiveRecommendations = recommendations.results.slice(0, 5);
@@ -112,7 +119,13 @@ class MoviePage extends React.Component {
                 {movieDetails.original_title}
               </Typography>
               <Typography
-                color="textSecondary"
+                align="right"
+                gutterBottom
+                variant="overline"
+              >
+                {genres}
+              </Typography>
+              <Typography
                 gutterBottom
                 variant="body1"
               >
@@ -120,7 +133,6 @@ class MoviePage extends React.Component {
               </Typography>
             </CardContent>
             <CardActions>
-              <Button size="small">Share</Button>
               <Button size="small" href={movieDetails.homepage}>Official Website</Button>
             </CardActions>
           </Card>
