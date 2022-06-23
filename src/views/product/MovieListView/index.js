@@ -49,6 +49,9 @@ class MovieList extends React.Component {
   }
 
   request(page, moviesSelect) {
+    this.setState({
+      isLoaded: false
+    });
     fetch(`https://api.themoviedb.org/3/movie/${moviesSelect}?api_key=${API_KEY}&language=en-US&page=${page}`)
       .then((res) => res.json())
       .then(
@@ -70,7 +73,9 @@ class MovieList extends React.Component {
   }
 
   handlePageChange(event, value) {
-    this.setState({ page: value });
+    this.setState({
+      page: value,
+    });
     this.request(value, this.state.moviesSelect);
   }
 

@@ -1,14 +1,15 @@
 /* eslint-disable react/no-unused-state */
 import React from 'react';
 import {
-  Box,
   Container,
   makeStyles
 } from '@material-ui/core';
 import Page from 'src/components/Page';
-import { API_KEY } from 'src/services/TMDB/MovieRequest';
-import Backdrop from '@mui/material/Backdrop';
-import CircularProgress from '@mui/material/CircularProgress';
+import { TMDB } from 'src/services/TMDB/MovieRequest';
+import {
+  Button, Card, CardActions, CardContent, CardMedia, Backdrop, CircularProgress,
+  Typography, Stack, Link
+} from '@mui/material';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -26,6 +27,8 @@ class MoviePage extends React.Component {
     super();
     this.state = {
       movieDetails: [],
+      credits: [],
+      recommendations: [],
       isLoaded: false,
       error: null
     };
@@ -34,37 +37,57 @@ class MoviePage extends React.Component {
   componentDidMount() {
     const searchParams = new URLSearchParams(window.location.search);
     const movieId = searchParams.get('id');
-
-    this.request(movieId);
+    this.requestData(movieId);
   }
 
-  request = (movieId) => {
-    fetch(`https://api.themoviedb.org/3/movie/${movieId}?api_key=${API_KEY}&language=en-US`)
-      .then((res) => res.json())
-      .then(
-        (result) => {
-          this.setState({
-            isLoaded: true,
-            movieDetails: result,
-            error: null
-          });
-        },
-        (error) => {
-          this.setState({
-            isLoaded: true,
-            error
-          });
-        }
-      );
-  };
+  requestData = (movieId) => {
+    this.setState({
+      isLoaded: false
+    });
+    Promise.all([
+      fetch(TMDB(movieId, '')),
+      fetch(TMDB(movieId, '/credits')),
+      fetch(TMDB(movieId, '/recommendations'))
+    ]).then((responses) => {
+      // Get a JSON object from each of the responses
+      return Promise.all(responses.map((response) => response.json()));
+    }).then(
+      (data) => {
+        this.setState({
+          isLoaded: true,
+          error: null,
+          movieDetails: data[0],
+          credits: data[1],
+          recommendations: data[2]
+        });
+      }
+    ).catch(
+      (error) => {
+        this.setState({
+          isLoaded: true,
+          error
+        });
+      }
+    );
+  }
 
   render() {
     const classes = useStyles;
-    const { movieDetails, isLoaded } = this.state;
+    const {
+      movieDetails, credits, recommendations, isLoaded
+    } = this.state;
+    let fiveCasts = [];
+    if (credits.cast !== undefined) {
+      fiveCasts = credits.cast.slice(0, 5);
+    }
+    let fiveRecommendations = [];
+    if (recommendations.results !== undefined) {
+      fiveRecommendations = recommendations.results.slice(0, 5);
+    }
     return (
       <Page
         className={classes.root}
-        title="Settings"
+        title={movieDetails.original_title}
       >
         <Backdrop
           sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
@@ -73,19 +96,94 @@ class MoviePage extends React.Component {
           <CircularProgress color="inherit" />
         </Backdrop>
         <Container id="movie-page">
-          <Box
-            id="banner"
-            mt={3}
-            display="flex"
-            justifyContent="center"
-          >
-            <img
-              alt="Product"
-              src={BANNER_BASE_URL + movieDetails.backdrop_path}
-              width="100%"
-              variant="square"
+          <Card>
+            <CardMedia
+              component="img"
+              image={BANNER_BASE_URL + movieDetails.backdrop_path}
+              alt="movie banner"
             />
-          </Box>
+            <CardContent>
+              <Typography
+                align="center"
+                color="textPrimary"
+                gutterBottom
+                variant="h4"
+              >
+                {movieDetails.original_title}
+              </Typography>
+              <Typography
+                color="textSecondary"
+                gutterBottom
+                variant="body1"
+              >
+                {movieDetails.overview}
+              </Typography>
+            </CardContent>
+            <CardActions>
+              <Button size="small">Share</Button>
+              <Button size="small" href={movieDetails.homepage}>Official Website</Button>
+            </CardActions>
+          </Card>
+
+          <Stack direction="row" spacing={2} mt={3}>
+            <Typography
+              align="left"
+              color="textPrimary"
+              gutterBottom
+              variant="h5"
+            >
+              Top Casts
+            </Typography>
+            {fiveCasts.map((member) => (
+              <Card key={member.name} sx={{ width: '20%' }}>
+                <CardMedia
+                  component="img"
+                  image={BANNER_BASE_URL + member.profile_path}
+                  alt="Profiler"
+                />
+                <CardContent>
+                  <Typography
+                    align="center"
+                    color="textSecondary"
+                    variant="body1"
+                  >
+                    {`${member.name} as ${member.character}`}
+                  </Typography>
+                </CardContent>
+              </Card>
+            ))}
+          </Stack>
+
+          <Stack direction="row" spacing={2} mt={3}>
+            <Typography
+              align="left"
+              color="textPrimary"
+              gutterBottom
+              variant="h5"
+            >
+              Recommendations
+            </Typography>
+            {fiveRecommendations.map((movie) => (
+              <Card key={movie.title} sx={{ width: '20%' }}>
+                <Link href={`/app/movie?id=${movie.id}`} underline="none">
+                  <CardMedia
+                    component="img"
+                    image={BANNER_BASE_URL + movie.poster_path}
+                    alt="Profiler"
+                  />
+                  <CardContent>
+                    <Typography
+                      align="center"
+                      color="textSecondary"
+                      variant="body1"
+                    >
+                      {movie.title}
+                    </Typography>
+                  </CardContent>
+                </Link>
+              </Card>
+            ))}
+          </Stack>
         </Container>
       </Page>
     );

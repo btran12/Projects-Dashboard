@@ -7,11 +7,11 @@ import {
   CardContent,
   Divider,
   Grid,
-  Typography,
   makeStyles
 } from '@material-ui/core';
 import Rating from '@mui/material/Rating';
 import Stars from '@material-ui/icons/Stars';
+import Typography from '@mui/material/Typography';
 import { NavLink } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
