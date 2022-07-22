@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { useEffect } from 'react';
 import { Link as RouterLink, useLocation } from 'react-router-dom';
 import PropTypes from 'prop-types';
@@ -32,6 +33,11 @@ const user = {
 
 const items = [
   {
+    href: '/app/movies',
+    icon: MovieIcon,
+    title: 'Movies'
+  },
+  {
     href: '/app/dashboard',
     icon: BarChartIcon,
     title: 'Dashboard'
@@ -40,11 +46,6 @@ const items = [
     href: '/app/customers',
     icon: UsersIcon,
     title: 'Customers'
-  },
-  {
-    href: '/app/movies',
-    icon: MovieIcon,
-    title: 'Movies'
   },
   {
     href: '/app/account',
