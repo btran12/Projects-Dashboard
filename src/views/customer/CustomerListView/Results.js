@@ -131,7 +131,7 @@ const Results = ({ className, customers, ...rest }) => {
                     >
                       <Avatar
                         className={classes.avatar}
-                        src={customer.avatarUrl}
+                        src={process.env.PUBLIC_URL + customer.avatarUrl}
                       >
                         {getInitials(customer.name)}
                       </Avatar>

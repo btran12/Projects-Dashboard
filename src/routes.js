@@ -23,7 +23,7 @@ const routes = [
       { path: 'movies', element: <MovieListView /> },
       { path: 'movie', element: <MoviePage /> },
       { path: 'settings', element: <SettingsView /> },
-      { path: '*', element: <Navigate to="/404" /> }
+      // { path: '*', element: <Navigate to="/404" /> }
     ]
   },
   {
@@ -34,7 +34,7 @@ const routes = [
       { path: 'register', element: <RegisterView /> },
       { path: '404', element: <NotFoundView /> },
       { path: '/', element: <Navigate to="/app/movies" /> },
-      { path: '*', element: <Navigate to="/404" /> }
+      { path: '*', element: <Navigate to="/app/dashboard" /> }
     ]
   }
 ];

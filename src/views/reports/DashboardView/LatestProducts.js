@@ -86,7 +86,7 @@ const LatestProducts = ({ className, ...rest }) => {
               <img
                 alt="Product"
                 className={classes.image}
-                src={product.imageUrl}
+                src={process.env.PUBLIC_URL + product.imageUrl}
               />
             </ListItemAvatar>
             <ListItemText

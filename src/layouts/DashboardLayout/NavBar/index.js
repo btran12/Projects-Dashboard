@@ -26,7 +26,7 @@ import {
 import NavItem from './NavItem';
 
 const user = {
-  avatar: '/static/images/avatars/baotran.jpg',
+  avatar: `${process.env.PUBLIC_URL}/static/images/avatars/baotran.jpg`,
   jobTitle: 'Senior Software Engineer at 3M',
   name: 'Bao Tran'
 };
