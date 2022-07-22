@@ -27,7 +27,7 @@ import NavItem from './NavItem';
 
 const user = {
   avatar: '/static/images/avatars/baotran.jpg',
-  jobTitle: 'Senior Software Engineer',
+  jobTitle: 'Senior Software Engineer at 3M',
   name: 'Bao Tran'
 };
 
