@@ -21,8 +21,8 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const BANNER_BASE_URL = 'https://image.tmdb.org/t/p/original';
-const BANNER_PLACEHOLDER = 'https://placehold.jp/1000x600.png';
-const PLACE_HOLDER_URL = 'https://placehold.jp/400x600.png';
+const BANNER_PLACEHOLDER = 'https://picsum.photos/seed/picsum/1000/600?grayscale';
+const PROFILE_PLACEHOLDER = 'https://placehold.jp/400x600.png';
 
 class MoviePage extends React.Component {
   constructor() {
@@ -154,7 +154,7 @@ class MoviePage extends React.Component {
                 <CardMedia
                   component="img"
                   image={(member.profile_path === null)
-                    ? PLACE_HOLDER_URL : BANNER_BASE_URL + member.profile_path}
+                    ? PROFILE_PLACEHOLDER : BANNER_BASE_URL + member.profile_path}
                   alt="Profiler"
                 />
                 <CardContent>
@@ -185,7 +185,7 @@ class MoviePage extends React.Component {
                   <CardMedia
                     component="img"
                     image={(movie.poster_path === null)
-                      ? PLACE_HOLDER_URL : BANNER_BASE_URL + movie.poster_path}
+                      ? PROFILE_PLACEHOLDER : BANNER_BASE_URL + movie.poster_path}
                     alt="Profiler"
                   />
                   <CardContent>
