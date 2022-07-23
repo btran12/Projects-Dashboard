@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import {
@@ -6,10 +6,9 @@ import {
   CardContent,
   CardHeader,
   Divider,
-  Grid,
-  TextField,
   makeStyles
 } from '@material-ui/core';
+import { Typography } from '@mui/material';
 
 const useStyles = makeStyles(() => ({
   root: {}
@@ -17,20 +16,20 @@ const useStyles = makeStyles(() => ({
 
 const ProfileDetails = ({ className, ...rest }) => {
   const classes = useStyles();
-  const [values, setValues] = useState({
-    firstName: 'Katarina',
-    lastName: 'Smith',
-    email: 'demo@devias.io',
-    phone: '',
-    state: 'Alabama',
-    country: 'USA'
-  });
-
-  const handleChange = (event) => {
-    setValues({
-      ...values,
-      [event.target.name]: event.target.value
-    });
+  const values = {
+    title: 'Senior Software Engineer',
+    company: '3M',
+    from: 'Feb 2017',
+    to: 'Present',
+    descriptions: ['Lead developer on international and domestic projects.',
+      'Provide guidance and support to new engineers on the team.',
+      'Facilitate the development of medical coding, grouping and billing software using Java.',
+      'Facilitate the migration of legacy technologies to using Java.',
+      'Build and support internal web applications written in ReactJS and AngularJS.',
+      'Develop and maintain internal web services.',
+      'Able to quickly learn and adapt to proprietary languages and technologies.',
+      'Able to clearly communicate with other team members and stakeholders.'
+    ]
   };
 
   return (
@@ -47,87 +46,14 @@ const ProfileDetails = ({ className, ...rest }) => {
         />
         <Divider />
         <CardContent>
-          <Grid
-            container
-            spacing={3}
-          >
-            <Grid
-              item
-              md={6}
-              xs={12}
-            >
-              <TextField
-                fullWidth
-                helperText="Please specify the first name"
-                label="First name"
-                name="firstName"
-                onChange={handleChange}
-                required
-                value={values.firstName}
-                variant="outlined"
-              />
-            </Grid>
-            <Grid
-              item
-              md={6}
-              xs={12}
-            >
-              <TextField
-                fullWidth
-                label="Last name"
-                name="lastName"
-                onChange={handleChange}
-                required
-                value={values.lastName}
-                variant="outlined"
-              />
-            </Grid>
-            <Grid
-              item
-              md={6}
-              xs={12}
-            >
-              <TextField
-                fullWidth
-                label="Email Address"
-                name="email"
-                onChange={handleChange}
-                required
-                value={values.email}
-                variant="outlined"
-              />
-            </Grid>
-            <Grid
-              item
-              md={6}
-              xs={12}
-            >
-              <TextField
-                fullWidth
-                label="Phone Number"
-                name="phone"
-                onChange={handleChange}
-                type="number"
-                value={values.phone}
-                variant="outlined"
-              />
-            </Grid>
-            <Grid
-              item
-              md={6}
-              xs={12}
-            >
-              <TextField
-                fullWidth
-                label="Country"
-                name="country"
-                onChange={handleChange}
-                required
-                value={values.country}
-                variant="outlined"
-              />
-            </Grid>
-          </Grid>
+          <Typography variant="h6" gutterBottom>
+            {`${values.title} | ${values.company} (${values.from} - ${values.to})`}
+          </Typography>
+          {values.descriptions.map((desc) => (
+            <Typography variant="body2" gutterBottom>
+              {desc}
+            </Typography>
+          ))}
         </CardContent>
         <Divider />
         <CardHeader

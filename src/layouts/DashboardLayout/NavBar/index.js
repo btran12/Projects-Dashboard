@@ -16,11 +16,11 @@ import {
   // AlertCircle as AlertCircleIcon,
   BarChart as BarChartIcon,
   // Lock as LockIcon,
-  Settings as SettingsIcon,
+  // Settings as SettingsIcon,
   // ShoppingBag as ShoppingBagIcon,
   User as UserIcon,
   // UserPlus as UserPlusIcon,
-  Users as UsersIcon,
+  // Users as UsersIcon,
   Video as MovieIcon
 } from 'react-feather';
 import NavItem from './NavItem';
@@ -42,21 +42,21 @@ const items = [
     icon: BarChartIcon,
     title: 'Dashboard'
   },
+  // {
+  //   href: '/dashboard/customers',
+  //   icon: UsersIcon,
+  //   title: 'Customers'
+  // },
   {
-    href: '/dashboard/customers',
-    icon: UsersIcon,
-    title: 'Customers'
-  },
-  {
-    href: '/dashboard/account',
+    href: '/dashboard/profile',
     icon: UserIcon,
-    title: 'Account'
+    title: 'Profile'
   },
-  {
-    href: '/dashboard/settings',
-    icon: SettingsIcon,
-    title: 'Settings'
-  },
+  // {
+  //   href: '/dashboard/settings',
+  //   icon: SettingsIcon,
+  //   title: 'Settings'
+  // },
   // {
   //   href: '/dashboard/login',
   //   icon: LockIcon,

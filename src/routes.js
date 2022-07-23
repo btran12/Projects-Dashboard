@@ -17,7 +17,7 @@ const routes = [
     path: '/dashboard',
     element: <DashboardLayout />,
     children: [
-      { path: 'account', element: <AccountView /> },
+      { path: 'profile', element: <AccountView /> },
       { path: 'customers', element: <CustomerListView /> },
       { path: 'index', element: <DashboardView /> },
       { path: 'movies', element: <MovieListView /> },
