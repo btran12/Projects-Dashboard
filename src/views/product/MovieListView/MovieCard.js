@@ -45,7 +45,7 @@ const MovieCard = ({ className, product: movie, ...rest }) => {
           justifyContent="center"
           mb={3}
         >
-          <NavLink to={`/app/movie?id=${movie.id}`}>
+          <NavLink to={`/dashboard/movie?id=${movie.id}`}>
             <img
               alt="movie"
               src={POSTER_BASE_URL + movie.poster_path}

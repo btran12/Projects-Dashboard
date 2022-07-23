@@ -15,11 +15,11 @@ import {
 } from '@material-ui/core';
 
 const user = {
-  avatar: `${process.env.PUBLIC_URL}/static/images/avatars/avatar_6.png`,
-  city: 'Los Angeles',
+  avatar: `${process.env.PUBLIC_URL}/static/images/avatars/baotran.jpg`,
+  city: 'Middletown, CT',
   country: 'USA',
-  jobTitle: 'Senior Developer',
-  name: 'Katarina Smith',
+  jobTitle: 'Senior Software Engineer',
+  name: 'Bao Tran',
   timezone: 'GTM-7'
 };
 
@@ -77,6 +77,7 @@ const Profile = ({ className, ...rest }) => {
           color="primary"
           fullWidth
           variant="text"
+          disabled
         >
           Upload picture
         </Button>

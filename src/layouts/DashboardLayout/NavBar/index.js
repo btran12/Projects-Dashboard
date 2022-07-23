@@ -15,11 +15,11 @@ import {
 import {
   // AlertCircle as AlertCircleIcon,
   BarChart as BarChartIcon,
-  Lock as LockIcon,
+  // Lock as LockIcon,
   Settings as SettingsIcon,
   // ShoppingBag as ShoppingBagIcon,
   User as UserIcon,
-  UserPlus as UserPlusIcon,
+  // UserPlus as UserPlusIcon,
   Users as UsersIcon,
   Video as MovieIcon
 } from 'react-feather';
@@ -33,40 +33,40 @@ const user = {
 
 const items = [
   {
-    href: '/app/movies',
+    href: '/dashboard/movies',
     icon: MovieIcon,
     title: 'Movies'
   },
   {
-    href: '/app/dashboard',
+    href: '/dashboard/index',
     icon: BarChartIcon,
     title: 'Dashboard'
   },
   {
-    href: '/app/customers',
+    href: '/dashboard/customers',
     icon: UsersIcon,
     title: 'Customers'
   },
   {
-    href: '/app/account',
+    href: '/dashboard/account',
     icon: UserIcon,
     title: 'Account'
   },
   {
-    href: '/app/settings',
+    href: '/dashboard/settings',
     icon: SettingsIcon,
     title: 'Settings'
   },
-  {
-    href: '/login',
-    icon: LockIcon,
-    title: 'Login'
-  },
-  {
-    href: '/register',
-    icon: UserPlusIcon,
-    title: 'Register'
-  },
+  // {
+  //   href: '/dashboard/login',
+  //   icon: LockIcon,
+  //   title: 'Login'
+  // },
+  // {
+  //   href: '/dashboard/register',
+  //   icon: UserPlusIcon,
+  //   title: 'Register'
+  // },
   // {
   //   href: '/404',
   //   icon: AlertCircleIcon,
@@ -117,7 +117,7 @@ const NavBar = ({ onMobileClose, openMobile }) => {
           className={classes.avatar}
           component={RouterLink}
           src={user.avatar}
-          to="/app/account"
+          to="/dashboard/account"
         />
         <Typography
           className={classes.name}

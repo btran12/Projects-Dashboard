@@ -177,7 +177,7 @@ class MoviePage extends React.Component {
             </Typography>
             {fiveRecommendations.map((movie) => (
               <Card key={movie.title} sx={{ width: '20%' }}>
-                <Link href={`/app/movie?id=${movie.id}`} underline="none">
+                <Link href={`/dashboard/movie?id=${movie.id}`} underline="none">
                   <CardMedia
                     component="img"
                     image={BANNER_BASE_URL + movie.poster_path}

@@ -14,27 +14,26 @@ import MoviePage from './views/product/MoviePageView';
 
 const routes = [
   {
-    path: 'app',
+    path: '/dashboard',
     element: <DashboardLayout />,
     children: [
       { path: 'account', element: <AccountView /> },
       { path: 'customers', element: <CustomerListView /> },
-      { path: 'dashboard', element: <DashboardView /> },
+      { path: 'index', element: <DashboardView /> },
       { path: 'movies', element: <MovieListView /> },
       { path: 'movie', element: <MoviePage /> },
       { path: 'settings', element: <SettingsView /> },
-      // { path: '*', element: <Navigate to="/404" /> }
     ]
   },
   {
-    path: '/',
+    path: '/dashboard',
     element: <MainLayout />,
     children: [
       { path: 'login', element: <LoginView /> },
       { path: 'register', element: <RegisterView /> },
       { path: '404', element: <NotFoundView /> },
-      { path: '/', element: <Navigate to="/app/movies" /> },
-      { path: '*', element: <Navigate to="/app/dashboard" /> }
+      { path: '/', element: <Navigate to="/dashboard/movies" /> },
+      { path: '*', element: <Navigate to="/dashboard/index" /> }
     ]
   }
 ];
