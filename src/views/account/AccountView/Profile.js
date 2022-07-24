@@ -5,14 +5,17 @@ import moment from 'moment';
 import {
   Avatar,
   Box,
-  Button,
   Card,
   CardActions,
   CardContent,
   Divider,
   Typography,
-  makeStyles
+  makeStyles,
+  Link,
+  Grid
 } from '@material-ui/core';
+import LinkedInIcon from '@material-ui/icons/LinkedIn';
+import GitHubIcon from '@material-ui/icons/GitHub';
 
 const user = {
   avatar: `${process.env.PUBLIC_URL}/static/images/avatars/baotran.jpg`,
@@ -73,14 +76,18 @@ const Profile = ({ className, ...rest }) => {
       </CardContent>
       <Divider />
       <CardActions>
-        <Button
-          color="primary"
-          fullWidth
-          variant="text"
-          disabled
-        >
-          Upload picture
-        </Button>
+        <Grid container spacing={5}>
+          <Grid item xs={1}>
+            <Link href="https://www.linkedin.com/in/baoqtran" color="inherit">
+              <LinkedInIcon fontSize="large" color="primary" />
+            </Link>
+          </Grid>
+          <Grid item xs={1}>
+            <Link href="https://github.com/btran12" color="inherit">
+              <GitHubIcon fontSize="large" />
+            </Link>
+          </Grid>
+        </Grid>
       </CardActions>
     </Card>
   );

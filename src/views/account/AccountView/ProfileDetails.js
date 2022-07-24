@@ -1,21 +1,12 @@
 import React from 'react';
-import clsx from 'clsx';
-import PropTypes from 'prop-types';
 import {
   Card,
   CardContent,
-  CardHeader,
   Divider,
-  makeStyles
 } from '@material-ui/core';
-import { Typography } from '@mui/material';
+import { Box, Rating, Typography } from '@mui/material';
 
-const useStyles = makeStyles(() => ({
-  root: {}
-}));
-
-const ProfileDetails = ({ className, ...rest }) => {
-  const classes = useStyles();
+const ProfileDetails = () => {
   const values = {
     title: 'Senior Software Engineer',
     company: '3M',
@@ -33,19 +24,13 @@ const ProfileDetails = ({ className, ...rest }) => {
   };
 
   return (
-    <form
-      autoComplete="off"
-      noValidate
-      className={clsx(classes.root, className)}
-      {...rest}
-    >
-      <Card>
-        <CardHeader
-          subheader=""
-          title="EXPERIENCE"
-        />
+    <Card>
+      <CardContent>
+        <Typography variant="h5" gutterBottom>
+          Experience
+        </Typography>
         <Divider />
-        <CardContent>
+        <Box mt={2}>
           <Typography variant="h6" gutterBottom>
             {`${values.title} | ${values.company} (${values.from} - ${values.to})`}
           </Typography>
@@ -54,20 +39,57 @@ const ProfileDetails = ({ className, ...rest }) => {
               {desc}
             </Typography>
           ))}
-        </CardContent>
-        <Divider />
-        <CardHeader
-          subheader=""
-          title="PROJECTS"
-        />
-        <Divider />
-      </Card>
-    </form>
-  );
-};
+        </Box>
+      </CardContent>
 
-ProfileDetails.propTypes = {
-  className: PropTypes.string
+      <CardContent>
+        <Typography variant="h5" gutterBottom>Languages</Typography>
+        <Divider />
+        <Box mt={2}>
+          <Typography component="legend">Java</Typography>
+          <Rating
+            defaultValue={5}
+            readOnly
+          />
+          <Typography component="legend">Javascript</Typography>
+          <Rating
+            defaultValue={5}
+            readOnly
+          />
+          <Typography component="legend">PHP</Typography>
+          <Rating
+            defaultValue={4.5}
+            precision={0.5}
+            readOnly
+          />
+          <Typography component="legend">Python</Typography>
+          <Rating
+            defaultValue={4}
+            readOnly
+          />
+          <Typography component="legend">Sql</Typography>
+          <Rating
+            defaultValue={3.5}
+            precision={0.5}
+            readOnly
+          />
+          <Typography component="legend">C++</Typography>
+          <Rating
+            defaultValue={2.5}
+            precision={0.5}
+            readOnly
+          />
+          <Typography component="legend">C</Typography>
+          <Rating
+            defaultValue={2.5}
+            precision={0.5}
+            readOnly
+          />
+        </Box>
+      </CardContent>
+      <Divider />
+    </Card>
+  );
 };
 
 export default ProfileDetails;
