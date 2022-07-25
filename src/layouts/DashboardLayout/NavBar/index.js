@@ -14,7 +14,7 @@ import {
 } from '@material-ui/core';
 import {
   // AlertCircle as AlertCircleIcon,
-  BarChart as BarChartIcon,
+  // BarChart as BarChartIcon,
   // Lock as LockIcon,
   // Settings as SettingsIcon,
   // ShoppingBag as ShoppingBagIcon,
@@ -37,11 +37,11 @@ const items = [
     icon: MovieIcon,
     title: 'Movies'
   },
-  {
-    href: '/dashboard/index',
-    icon: BarChartIcon,
-    title: 'Dashboard'
-  },
+  // {
+  //   href: '/dashboard/index',
+  //   icon: BarChartIcon,
+  //   title: 'Dashboard'
+  // },
   // {
   //   href: '/dashboard/customers',
   //   icon: UsersIcon,
