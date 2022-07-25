@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import {
   Avatar,
   Box,
+  Button,
   Divider,
   Drawer,
   Hidden,
@@ -147,6 +148,17 @@ const NavBar = ({ onMobileClose, openMobile }) => {
         </List>
       </Box>
       <Box flexGrow={1} />
+      <Box
+        p={2}
+        m={2}
+      >
+        <Typography
+          align="left"
+          variant="caption"
+        >
+          Powered by ReactJS | MaterialUI
+        </Typography>
+      </Box>
     </Box>
   );
 

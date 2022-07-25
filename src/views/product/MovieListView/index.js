@@ -12,6 +12,7 @@ import Pagination from '@mui/material/Pagination';
 import Page from 'src/components/Page';
 import Backdrop from '@mui/material/Backdrop';
 import CircularProgress from '@mui/material/CircularProgress';
+import Typography from '@mui/material/Typography';
 import Toolbar from './Toolbar';
 import MovieCard from './MovieCard';
 
@@ -140,6 +141,7 @@ class MovieList extends React.Component {
           </Box>
           <Box
             mt={3}
+            mb={3}
             display="flex"
             justifyContent="center"
           >
@@ -150,6 +152,15 @@ class MovieList extends React.Component {
               page={page}
               onChange={this.handlePageChange}
             />
+          </Box>
+          <Box
+            mb={3}
+            display="flex"
+            justifyContent="left"
+          >
+            <Typography variant="caption">
+              Service provided by www.themoviedb.org
+            </Typography>
           </Box>
         </Container>
       </Page>
