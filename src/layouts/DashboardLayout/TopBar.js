@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import {
   AppBar,
-  Badge,
+  // Badge,
   Box,
   Hidden,
   IconButton,
@@ -11,10 +11,10 @@ import {
   makeStyles
 } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
-import NotificationsIcon from '@material-ui/icons/NotificationsOutlined';
-import InputIcon from '@material-ui/icons/Input';
+// import NotificationsIcon from '@material-ui/icons/NotificationsOutlined';
 import Logo from 'src/components/Logo';
 import { Link } from '@mui/material';
+import { History } from '@material-ui/icons';
 
 const useStyles = makeStyles(() => ({
   root: {},
@@ -30,7 +30,7 @@ const TopBar = ({
   ...rest
 }) => {
   const classes = useStyles();
-  const [notifications] = useState([]);
+  // const [notifications] = useState([2, 3]);
 
   return (
     <AppBar
@@ -44,7 +44,7 @@ const TopBar = ({
         </Link>
         <Box flexGrow={1} />
         <Hidden mdDown>
-          <IconButton color="inherit">
+          {/* <IconButton color="inherit">
             <Badge
               badgeContent={notifications.length}
               color="primary"
@@ -52,10 +52,14 @@ const TopBar = ({
             >
               <NotificationsIcon />
             </Badge>
-          </IconButton>
-          <IconButton color="inherit">
-            <InputIcon />
-          </IconButton>
+          </IconButton> */}
+          <Link href="https://www.baotran.xyz/oldView.html" color="inherit">
+            <IconButton
+              color="inherit"
+            >
+              <History />
+            </IconButton>
+          </Link>
         </Hidden>
         <Hidden lgUp>
           <IconButton

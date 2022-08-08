@@ -1,7 +1,7 @@
 export const profile = {
   title: 'Senior Software Engineer',
   company: '3M',
-  from: 'Feb 2017',
+  from: 'Nov 2021',
   to: 'Present',
   descriptions: ['Lead developer on international and domestic projects.',
     'Provide guidance and support to new engineers on the team.',
